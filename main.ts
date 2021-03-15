@@ -1,16 +1,21 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    missle = sprites.createProjectileFromSprite(assets.image`missle`, vger, 0, -100)
+})
+let missle: Sprite = null
+let vger: Sprite = null
 effects.starField.startScreenEffect()
+game.splash("USS Voyager", "Lost in the Delta Quadrant - needs to avoid the Kazon!")
 scene.setBackgroundColor(15)
-let vger = sprites.create(assets.image`Voyager`, SpriteKind.Player)
+vger = sprites.create(assets.image`Voyager`, SpriteKind.Player)
 let kzon = sprites.create(assets.image`myImage`, SpriteKind.Enemy)
 kzon.setPosition(34, 4)
 kzon.setBounceOnWall(true)
 controller.moveSprite(vger)
 vger.setBounceOnWall(true)
-let missle = sprites.createProjectileFromSprite(assets.image`missle`, kzon, 50, 50)
 forever(function () {
     kzon.x = vger.x
     pause(200)
     if (randint(0, 30) < 5) {
-        missle = sprites.createProjectileFromSprite(assets.image`missle`, kzon, vger.x, vger.y)
+        missle = sprites.createProjectileFromSprite(assets.image`missle`, kzon, 0, vger.y)
     }
 })
