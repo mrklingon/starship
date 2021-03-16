@@ -1,5 +1,5 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    missle = sprites.createProjectileFromSprite(assets.image`missle`, vger, 0, -100)
+    missle = sprites.createProjectileFromSprite(assets.image`missle0`, vger, 0, -100)
 })
 let missle: Sprite = null
 let vger: Sprite = null
