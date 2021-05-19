@@ -1,6 +1,11 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     missle = sprites.createProjectileFromSprite(assets.image`missle0`, vger, 0, -100)
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    if (otherSprite == vger) {
+        info.changeLifeBy(-1)
+    }
+})
 let missle: Sprite = null
 let vger: Sprite = null
 effects.starField.startScreenEffect()
@@ -12,6 +17,7 @@ kzon.setPosition(34, 4)
 kzon.setBounceOnWall(true)
 controller.moveSprite(vger)
 vger.setBounceOnWall(true)
+info.setLife(30)
 forever(function () {
     kzon.x = vger.x
     pause(200)
