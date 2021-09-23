@@ -1,18 +1,20 @@
+namespace SpriteKind {
+    export const kmss = SpriteKind.create()
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Vmiss = sprites.createProjectileFromSprite(assets.image`missle0`, vger, 0, -100)
+    Vmiss.setFlag(SpriteFlag.AutoDestroy, true)
     music.pewPew.play()
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    if (sprite == missle) {
-        info.changeLifeBy(-1)
-    }
+sprites.onOverlap(SpriteKind.kmss, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (otherSprite == kzon) {
         info.changeScoreBy(1)
     }
 })
-let missle: Sprite = null
+let Kmiss: Sprite = null
 let Vmiss: Sprite = null
 let kzon: Sprite = null
 let vger: Sprite = null
@@ -30,6 +32,9 @@ forever(function () {
     kzon.x = vger.x
     pause(200)
     if (randint(0, 30) < 5) {
-        missle = sprites.createProjectileFromSprite(assets.image`missle`, kzon, 0, vger.y)
+        Kmiss = sprites.create(assets.image`missle`, SpriteKind.kmss)
+        Kmiss.setVelocity(0, 120)
+        Kmiss.setPosition(kzon.x, kzon.y)
+        Kmiss.setFlag(SpriteFlag.AutoDestroy, true)
     }
 })
