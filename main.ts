@@ -8,8 +8,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.kmss, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    scene.cameraShake(4, 500)
+    sprite.destroy()
     music.knock.play()
+    scene.cameraShake(4, 500)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (otherSprite == kzon) {
