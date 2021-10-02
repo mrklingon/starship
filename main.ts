@@ -3,7 +3,7 @@ namespace SpriteKind {
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (quantum <= 0) {
-        Vmiss = sprites.createProjectileFromSprite(assets.image`missle0`, vger, 0, -301)
+        Vmiss = sprites.createProjectileFromSprite(assets.image`missle1`, vger, 0, -301)
         Vmiss.setFlag(SpriteFlag.AutoDestroy, true)
         music.baDing.play()
         quantum = 20
